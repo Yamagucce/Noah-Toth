@@ -16,8 +16,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add active class to navigation items on scroll
+// Combined scroll handler for better performance
 window.addEventListener('scroll', () => {
+    // Update active navigation link
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-links a');
     
@@ -36,6 +37,14 @@ window.addEventListener('scroll', () => {
             link.classList.add('active');
         }
     });
+
+    // Update header shadow
+    const header = document.querySelector('header');
+    if (window.scrollY > 0) {
+        header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+    } else {
+        header.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
+    }
 });
 
 // Add animation to project cards on scroll
@@ -73,12 +82,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Add header shadow on scroll
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 0) {
-        header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
-    } else {
-        header.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
-    }
-});
+
